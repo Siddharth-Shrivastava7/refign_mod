@@ -127,7 +127,7 @@ model:
           - 1
         input_transform: multiple_select
         estimate_uncertainty: True
-        pretrained: pretrained_models/uawarpc_megadepth.ckpt
+        pretrained: /home/sidd_s/scratch/saved_models/refign/uawarpc_megadepth.ckpt
     loss:
       class_path: models.losses.PixelWeightedCrossEntropyLoss
     metrics:

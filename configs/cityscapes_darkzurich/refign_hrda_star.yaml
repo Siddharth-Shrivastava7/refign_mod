@@ -47,14 +47,14 @@ data:
             - class_path: data_modules.transforms.ConvertImageDtype
             - class_path: data_modules.transforms.Normalize
       test:
-        DarkZurich:
-          load_keys:
-            - image
-            - semantic
-          transforms:
-            - class_path: data_modules.transforms.ToTensor
-            - class_path: data_modules.transforms.ConvertImageDtype
-            - class_path: data_modules.transforms.Normalize
+        # DarkZurich:
+        #   load_keys:
+        #     - image
+        #     - semantic
+        #   transforms:
+        #     - class_path: data_modules.transforms.ToTensor
+        #     - class_path: data_modules.transforms.ConvertImageDtype
+        #     - class_path: data_modules.transforms.Normalize
         NighttimeDriving:
           load_keys:
             - image
@@ -63,14 +63,14 @@ data:
             - class_path: data_modules.transforms.ToTensor
             - class_path: data_modules.transforms.ConvertImageDtype
             - class_path: data_modules.transforms.Normalize
-        BDD100kNight:
-          load_keys:
-            - image
-            - semantic
-          transforms:
-            - class_path: data_modules.transforms.ToTensor
-            - class_path: data_modules.transforms.ConvertImageDtype
-            - class_path: data_modules.transforms.Normalize
+        # BDD100kNight:
+        #   load_keys:
+        #     - image
+        #     - semantic
+        #   transforms:
+        #     - class_path: data_modules.transforms.ToTensor
+        #     - class_path: data_modules.transforms.ConvertImageDtype
+        #     - class_path: data_modules.transforms.Normalize
       predict:
         DarkZurich:
           predict_on: test
@@ -155,24 +155,24 @@ model:
               num_classes: 19
               compute_on_step: False
       test:
-        DarkZurich:
-          - class_path: helpers.metrics.IoU
-            init_args:
-              ignore_index: 255
-              num_classes: 19
-              compute_on_step: False
+        # DarkZurich:
+        #   - class_path: helpers.metrics.IoU
+        #     init_args:
+        #       ignore_index: 255
+        #       num_classes: 19
+        #       compute_on_step: False
         NighttimeDriving:
           - class_path: helpers.metrics.IoU
             init_args:
               ignore_index: 255
               num_classes: 19
               compute_on_step: False
-        BDD100kNight:
-          - class_path: helpers.metrics.IoU
-            init_args:
-              ignore_index: 255
-              num_classes: 19
-              compute_on_step: False
+        # BDD100kNight:
+        #   - class_path: helpers.metrics.IoU
+        #     init_args:
+        #       ignore_index: 255
+        #       num_classes: 19
+        #       compute_on_step: False
 optimizer:
   class_path: torch.optim.AdamW
   init_args:

@@ -51,7 +51,7 @@ class ACDC(torch.utils.data.Dataset):
             self.condition = condition 
             
         ## hard coding for testing on one of the adverse conditions at a time "night" or "snow" or "rain", "fog"
-        # self.condition = ['fog']
+        self.condition = ['rain']
         
 
         if isinstance(load_keys, str):

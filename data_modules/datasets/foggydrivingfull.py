@@ -7,16 +7,16 @@ from PIL import Image
 from ..transforms import pillow_interp_codes
 
 
-class FoggyZurich(torch.utils.data.Dataset):
+class FoggyDrivingFull(torch.utils.data.Dataset):
 
-    orig_dims = (1080, 1920)
+    orig_dims = (960, 1280)
 
     def __init__(
             self,
             root: str,
             # stage: str = "test",
             load_keys: Union[List[str], str] = ["image", "semantic"],
-            dims: Union[Tuple[int, int], List[int]] = (1080, 1920),
+            dims: Union[Tuple[int, int], List[int]] = (960, 1280),
             transforms: Optional[Callable] = None,
             **kwargs
     ) -> None:
@@ -36,9 +36,9 @@ class FoggyZurich(torch.utils.data.Dataset):
 
         self.paths = {k: [] for k in ['image', 'semantic']}
 
-        self.images_dir = os.path.join(self.root, 'RGB_images')
+        self.images_dir = os.path.join(self.root, 'leftImg8bit')
         self.semantic_dir = os.path.join(
-            self.root, 'gt_labelTrainIds')
+            self.root, 'gtFine')
         if not os.path.isdir(self.images_dir) or not os.path.isdir(self.semantic_dir):
             raise RuntimeError('Dataset not found or incomplete. Please make sure all required folders for the'
                                ' specified "split" and "condition" are inside the "root" directory')
@@ -50,7 +50,8 @@ class FoggyZurich(torch.utils.data.Dataset):
                 if k == 'image':
                     file_path = os.path.join(img_dir, file_name)
                 elif k == 'semantic':
-                    semantic_file_name = file_name
+                    semantic_file_name = file_name.replace(
+                        'leftImg8bit.png', 'labelTrainIds.png')
                     file_path = os.path.join(semantic_dir, semantic_file_name)
                 self.paths[k].append(file_path)
 

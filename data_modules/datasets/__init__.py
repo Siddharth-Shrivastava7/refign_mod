@@ -7,3 +7,4 @@ from .robotcar import RobotCar
 from .megadepth import MegaDepth
 from .robotcarmatching import RobotCarMatching
 from .foggyzurich import FoggyZurich
+from .foggydrivingfull import FoggyDrivingFull

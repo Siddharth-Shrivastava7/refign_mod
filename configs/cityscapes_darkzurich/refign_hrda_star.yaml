@@ -55,7 +55,15 @@ data:
         #     - class_path: data_modules.transforms.ToTensor
         #     - class_path: data_modules.transforms.ConvertImageDtype
         #     - class_path: data_modules.transforms.Normalize
-        NighttimeDriving:
+        # NighttimeDriving:
+        #   load_keys:
+        #     - image
+        #     - semantic
+        #   transforms:
+        #     - class_path: data_modules.transforms.ToTensor
+        #     - class_path: data_modules.transforms.ConvertImageDtype
+        #     - class_path: data_modules.transforms.Normalize
+        FoggyZurich:
           load_keys:
             - image
             - semantic
@@ -161,18 +169,26 @@ model:
         #       ignore_index: 255
         #       num_classes: 19
         #       compute_on_step: False
-        NighttimeDriving:
-          - class_path: helpers.metrics.IoU
-            init_args:
-              ignore_index: 255
-              num_classes: 19
-              compute_on_step: False
+        # NighttimeDriving:
+        #   - class_path: helpers.metrics.IoU
+        #     init_args:
+        #       ignore_index: 255
+        #       num_classes: 19
+        #       compute_on_step: False
         # BDD100kNight:
         #   - class_path: helpers.metrics.IoU
         #     init_args:
         #       ignore_index: 255
         #       num_classes: 19
         #       compute_on_step: False
+        FoggyZurich:
+          load_keys:
+            - image
+            - semantic
+          transforms:
+            - class_path: data_modules.transforms.ToTensor
+            - class_path: data_modules.transforms.ConvertImageDtype
+            - class_path: data_modules.transforms.Normalize
 optimizer:
   class_path: torch.optim.AdamW
   init_args:

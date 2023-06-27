@@ -6,3 +6,4 @@ from .bdd100knight import BDD100kNight
 from .robotcar import RobotCar
 from .megadepth import MegaDepth
 from .robotcarmatching import RobotCarMatching
+from .foggyzurich import FoggyZurich

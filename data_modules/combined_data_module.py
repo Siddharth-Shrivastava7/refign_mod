@@ -52,6 +52,7 @@ class CombinedDataModule(LightningDataModule):
             'RobotCar': os.path.join(DATA_DIR, 'RobotCar'),
             'MegaDepth': os.path.join(DATA_DIR, 'MegaDepth_debug' if self.debug else 'MegaDepth'),
             'RobotCarMatching': os.path.join(DATA_DIR, 'RobotCar'),
+            'FoggyZurich': os.path.join(DATA_DIR, 'Foggy_Zurich'),
         }
         self.num_workers = num_workers
         assert batch_size % batch_size_divisor == 0
